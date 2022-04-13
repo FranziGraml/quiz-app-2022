@@ -1,0 +1,79 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+
+.quiz_headline {
+  background-color: rgba(236, 166, 166, 0.472);
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.headline {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.card_container {
+  position: relative;
+  border: solid;
+  box-shadow: rgba(197, 64, 75, 0.52) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0) 0px 30px 60px -30px,
+    rgba(182, 93, 20, 0.65) 0px -2px 6px 0px inset;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 2rem;
+}
+
+.unList {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0.5rem 0 0.2rem 0;
+  padding: 0;
+}
+.tags {
+  border: solid 0.1rem;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.3rem;
+  background-color: rgba(249, 212, 189, 0.568);
+  font-size: medium;
+}
+
+.button {
+  display: flex;
+  margin: auto;
+}
+.button:hover {
+  background-color: red;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+.button_hidden {
+  display: none;
+}
+.quiz:footer {
+  display: flex;
+  background-color: rgba(236, 166, 166, 0.472);
+  padding: 0.5rem;
+  justify-content: space-around;
+  position: sticky;
+}
+
+.quiz_footer {
+  display: flex;
+  background-color: rgba(236, 166, 166, 0.472);
+  padding: 0.5rem;
+  justify-content: space-around;
+  position: sticky;
+}
