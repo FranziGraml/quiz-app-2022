@@ -1,12 +1,7 @@
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.App {
+  font-family: sans-serif;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
-
 
 .quiz_headline {
   background-color: rgba(236, 166, 166, 0.472);
@@ -77,3 +72,4 @@
   justify-content: space-around;
   position: sticky;
 }
+

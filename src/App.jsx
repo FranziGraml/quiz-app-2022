@@ -1,54 +1,73 @@
 import "./App.css";
-import React from "react";
-//import styled from 'styled-components';
+import React, { useEffect } from "react";
+import styled from 'styled-components';
+import { useState } from "react";
+import Card from '../Components/Card';
+import Footer from '../Components/Footer'
+
+
 
 export default function App() {
-  return (
-    <>
-      <div>
-        <section className="Container">
-          <h1 className="quiz_headline">QUIZ-APP</h1>
-          <article className="card_container">
-            <h2 className="headline">Question</h2>
-            <AnswerToggle
-              questionText="Lorem Ipsum dkjdkjdkjd"
-              buttonAnswer="Show Answer"
-              answerText="Lorem Ipsum djkdjk"
-              buttonHide=" Hide Answer"
-            />
-            <UnList List="pink" />
-          </article>
+const url = "https://the-trivia-api.com/questions";
+const [question, setQuestion] = useState([]);
 
-          <footer class="quiz_footer"></footer>
-        </section>
-      </div>
-    </>
-  );
+
+async function fetchApi(apiUrl) {
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Something went wrong ${error}`);
+  }
 }
 
-function AnswerToggle({ questionText, buttonAnswer, answerText, buttonHide }) {
-  return (
-    <>
-      <div>
-        <p>{questionText}</p>
-        <button className="button">{buttonAnswer}</button>
-        <button className="button_hidden">{buttonHide}</button>
-        <p className="hidden">{answerText}</p>
-      </div>
-    </>
-  );
-}
+  useEffect(() => {
+  initialQuestion();
+  }, []);
 
-function UnList({ List }) {
+ 
+
+  async function initialQuestion() {
+    const question = await fetchApi(url);
+    const upgradedQuestion = await Promise.all(
+      question.map(async (question, index) => {
+        return {
+          category: question.category,
+          question: question.question,
+          incorrectAnswers: question.incorrectAnswers,
+          correctAnswer: question.correctAnswer,
+          isHidden: true,
+          index: index,
+        };
+      })
+    );
+    setQuestion(upgradedQuestion);
+  };
+
+  
+  function toggleAnswer(index) {
+    const newState = [...question];
+    newState[index].isHidden =  !newState[index].isHidden;
+    setQuestion(newState);
+  };
+
+  console.log('hallo', question);
+
   return (
     <>
-      <div>
-        <ul className="unList">
-          <li className="tags">{List}</li>
-          <li className="tags">{List}</li>
-          <li className="tags">{List}</li>
-        </ul>
-      </div>
+    <div className="App">
+      <h1></h1>
+    <Card 
+    question={question}
+    toggleAnswer={toggleAnswer}
+    setQuestion={setQuestion}
+    />
+    </div>
+    <div>
+      
+    </div>
+    <Footer />
     </>
-  );
+  )
 }
