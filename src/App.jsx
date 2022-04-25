@@ -3,7 +3,11 @@ import React, { useEffect } from "react";
 import styled from 'styled-components';
 import { useState } from "react";
 import Card from '../Components/Card';
-import Footer from '../Components/Footer'
+import Footer from '../Components/Footer';
+import Profile from '../Components/Profile';
+//import Form from '../Components/Form';
+import {Routes} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 
 
@@ -55,19 +59,19 @@ async function fetchApi(apiUrl) {
   console.log('hallo', question);
 
   return (
-    <>
-    <div className="App">
-      <h1></h1>
-    <Card 
-    question={question}
-    toggleAnswer={toggleAnswer}
-    setQuestion={setQuestion}
-    />
-    </div>
-    <div>
-      
-    </div>
+  <div className="App">
+    <Routes>
+      <Route exact path="/" element={<Card 
+        question={question}
+        toggleAnswer={toggleAnswer}
+        />} />
+      <Route path="Bookmark"></Route>
+      <Route path="Form"></Route>
+        
+      <Route path="Profile" element={<Profile />} />
+    </Routes>
     <Footer />
-    </>
+  </div>
   )
 }
+

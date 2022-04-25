@@ -1,11 +1,12 @@
 import React from "react";
 import styled from 'styled-components';
-import bookmark from '../images/bookmark.png'
+import bookmark from '../images/bookmark.png'; 
 import { useState } from "react";
 
 
-
 export default function Card({question, toggleAnswer}) {
+
+  const [bookmarkColor, setBookmarkColor]= useState(false);
 
     return (
       <div>
@@ -14,9 +15,14 @@ export default function Card({question, toggleAnswer}) {
         <section>
           <CardContainer>
           <Headline>Question</Headline>
-          <span>
-            <BookImg src={bookmark}/>
-          </span>
+           <span>
+            <BookImg src={bookmark}
+            bool={bookmarkColor}
+            onClick={()=> {
+              setBookmarkColor(!bookmarkColor);
+            }}
+            />
+          </span> 
           <Text>{question.question}</Text>
           <UnList>
             <ListTags>{question.incorrectAnswers[0]}</ListTags>
@@ -76,7 +82,18 @@ padding: 0.5rem;
   right: 0rem;
   top: 0.3rem;
   cursor:pointer;
-  `;
+  
+
+  ${({ bool = false }) => {
+    if (bool) {
+      return `
+        background-color: red;
+      `;
+    }
+  }}
+`;
+
+  
 
 
 
